@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<!-- login23:11-->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+    <title>Quản lý Phòng khám</title>
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+    <script src="assets/js/login.js"
+
+    type="module"
+
+
+    ></script>
+    <!--[if lt IE 9]>
+		<script src="assets/js/html5shiv.min.js"></script>
+		<script src="assets/js/respond.min.js"></script>
+	<![endif]-->
+</head>
+
+<body>
+    <div class="main-wrapper account-wrapper">
+        <div class="account-page">
+			<div class="account-center">
+				<div class="account-box">
+
+                    <form id="form-signin" class="form-signin">
+						<div class="account-logo">
+                            <a href="index-2.html"><img src="assets/img/logo-dark.png" alt=""></a>
+                        </div>
+                        <div class="form-group">
+                            <label>Username or Email</label>
+                            <input id="username" type="text" autofocus="" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input id="password" type="password" class="form-control">
+                        </div>
+                        <div class="form-group text-right">
+                            <a href="forgot-password.html">Forgot your password?</a>
+                        </div>
+                        <div class="form-group text-center">
+                            <button id="loginButton"  type="submit"  class="btn btn-primary account-btn" > Login</button>
+                        </div>
+                        <div class="text-center register-link">
+                            Don’t have an account? <a href="register.html">Register Now</a>
+                        </div>
+                    </form>
+                </div>
+			</div>
+        </div>
+        <p>A12345678b</p>
+    </div>
+    <script src="assets/js/jquery-3.2.1.min.js"></script>
+	<script src="assets/js/popper.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/app.js"></script>
+    <script src="assets/js/login.js" type="module"></script>
+    <script src="assets/js/storage.js"></script>
+    <script>
+
+
+        document.getElementById("form-signin").addEventListener("submit", function(e) {
+            e.preventDefault()
+            // Lấy giá trị của username và password từ các input
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+
+            // Tạo payload để gửi đến API
+            var payload = {
+                phone: username,
+                password: password
+            };
+            var params = new URLSearchParams(payload).toString();
+
+            // login.makeAjaxRequest('POST','http://localhost:8080/api/login?' + params, null)
+            //     .then((result) => {
+
+            //         if(result)
+            //         console.log('data from api: ', result);
+            //         // window.location.href = "/index-2.html";
+            //     }).catch((err) => {
+            //         console.log('err:', err);
+            //     });
+
+             console.log(params);
+            // Gửi yêu cầu đến API
+            fetch('http://localhost:8080/api/login?'+params, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+
+                // body: JSON.stringify(payload)
+            })
+            .then(response => {
+                console.log(response);
+                if (response.ok) {
+                    response.json().then(body => {
+                        console.log(response.url);
+                        saveSession('loginData', body.data);
+                        saveLocal('accessToken', body.accessToken);
+                        saveLocal('refreshToken', body.refreshToken);
+                        if(body.data.role.id === 1) {
+                            window.location.href = "/index-2.html";
+                        }
+
+                        if(body.data.role.id === 2) {
+                            window.location.href = "/appointments.html";
+                        }
+                    })
+
+
+                    // Nếu đăng nhập thành công, chuyển hướng đến trang index-2.html
+                    // window.location.href = "/index-2.html";
+                    // window.location.href = "/appointments.html";
+                } else {
+                    // Xử lý lỗi nếu đăng nhập không thành công
+                    alert("Please enter correct username and password.");
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                // Xử lý lỗi mạng hoặc lỗi từ máy chủ
+                alert("An error occurred. Please try again later.");
+            });
+        });
+    </script>
+
+</body>
+
+
+<!-- login23:12-->
+</html>
