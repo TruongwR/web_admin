@@ -12,7 +12,7 @@ function getSession(key) {
     // Lấy dữ liệu từ sessionStorage
     var jsonData = sessionStorage.getItem(key);
 
-    console.log('get from sessioin:\n', jsonData);
+    console.log('get from session:\n', key, ': ', jsonData);
     // Nếu không có dữ liệu được lưu trữ cho khóa đã chỉ định, trả về null
     if (!jsonData) {
         return null;

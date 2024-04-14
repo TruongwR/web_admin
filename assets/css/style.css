@@ -55,6 +55,36 @@ Version      : 1.0
 /*-----------------
 	1. General
 -----------------------*/
+#toast {
+	display: none;
+	position: fixed;
+	bottom: 20px;
+	right: 20px;
+	min-width: 150px;
+	min-height: 60px;
+	/* height: fit-content;  */
+	background-color: #fff;
+	border-radius: 10px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+	overflow: hidden;
+	z-index: 9999;
+	font-weight: bold;
+  }
+  
+  .toast-content {
+	padding: 20px;
+	text-align: center; 
+	justify-content: center; 
+	align-items: center;
+  }
+  
+  .hidden {
+	display: none;
+  }
+  
+  .toast-header {
+	background-color: red; /* Màu vàng */
+  } 
 
 @import url('https://fonts.googleapis.com/css?family=Rubik:400,500,700');
 html {
@@ -664,7 +694,7 @@ textarea.form-control {
 	height: 18px;
 }
 .form-control.form-control-sm {
-	padding: 0.25rem 0.5rem;
+	padding: 0.5rem 1rem;
 }
 .card .card-header {
 	background-color: rgba(255, 255, 255, 0.1);
@@ -4913,4 +4943,25 @@ blockquote p {
 		margin: 0 auto;
 		margin-bottom: 10px;
 	}
+}
+
+.button-like {
+	display: inline-block;
+	padding: 5px 10px;
+	background-color: #007bff; /* Màu nền */
+	color: #fff; /* Màu chữ */
+	border: none; /* Loại bỏ đường viền */
+	border-radius: 5px; /* Bo góc */
+	cursor: pointer;
+	text-decoration: none;
+	transition: background-color 0.3s; /* Hiệu ứng hover */
+}
+
+.paging {
+	display: inline-block;
+	padding: 5px 5px;
+	color: #000; /* Màu chữ */ 
+	border: none; /* Loại bỏ đường viền */
+	border-radius: 5px; /* Bo góc */ 
+	text-decoration: none; 
 }

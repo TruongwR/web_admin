@@ -307,16 +307,17 @@
                             <div class="profile-view">
                                 <div class="profile-img-wrap">
                                     <div class="profile-img">
-                                        <a href="#"><img class="avatar" src="assets/img/doctor-03.jpg" alt=""></a>
+                                        <a href="#"><img class="avatar" src="" alt="" id="avatar"></a>
                                     </div>
                                 </div>
                                 <div class="profile-basic">
                                     <div class="row">
                                         <div class="col-md-5">
                                             <div class="profile-info-left">
-                                                <h3 class="user-name m-t-0 mb-0">Cristina Groves</h3>
-                                                <small class="text-muted">Gynecologist</small>
-                                                <div class="staff-id">Employee ID : DR-0001</div>
+                                                <h3 class="user-name m-t-0 mb-0" id="name"></h3>
+                                                <small class="text-muted" id="specialization"></small>
+                                                <div class="staff-id" id="id">Employee ID: DR-</div>
+                                                <div class="staff-id" id="cccd">Citized ID: </div>
                                                 <div class="staff-msg"><a href="chat.html" class="btn btn-primary">Send Message</a></div>
                                             </div>
                                         </div>
@@ -324,23 +325,27 @@
                                             <ul class="personal-info">
                                                 <li>
                                                     <span class="title">Phone:</span>
-                                                    <span class="text"><a href="#">770-889-6484</a></span>
+                                                    <span class="text" id="phone"></span>
                                                 </li>
                                                 <li>
                                                     <span class="title">Email:</span>
-                                                    <span class="text"><a href="#">cristinagroves@example.com</a></span>
+                                                    <span class="text" id="email"></span>
                                                 </li>
                                                 <li>
                                                     <span class="title">Birthday:</span>
-                                                    <span class="text">3rd March</span>
+                                                    <span class="text" id="birthday"></span>
                                                 </li>
                                                 <li>
                                                     <span class="title">Address:</span>
-                                                    <span class="text">714 Burwell Heights Road, Bridge City, TX, 77611</span>
+                                                    <span class="text" id="address"></span>
                                                 </li>
                                                 <li>
                                                     <span class="title">Gender:</span>
-                                                    <span class="text">Female</span>
+                                                    <span class="text" id="gender"></span>
+                                                </li>
+                                                <li>
+                                                    <span class="title">Booking:</span>
+                                                    <span class="text" id="booking"></span>
                                                 </li>
                                             </ul>
                                         </div>
@@ -351,18 +356,47 @@
                     </div>
                 </div>
 				<div class="profile-tabs">
-					<ul class="nav nav-tabs nav-tabs-bottom">
+					<!-- <ul class="nav nav-tabs nav-tabs-bottom">
 						<li class="nav-item"><a class="nav-link active" href="#about-cont" data-toggle="tab">About</a></li>
 						<li class="nav-item"><a class="nav-link" href="#bottom-tab2" data-toggle="tab">Profile</a></li>
 						<li class="nav-item"><a class="nav-link" href="#bottom-tab3" data-toggle="tab">Messages</a></li>
-					</ul>
+					</ul> -->
 
 					<div class="tab-content">
 						<div class="tab-pane show active" id="about-cont">
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="card-box">
-                            <h3 class="card-title">Education Informations</h3>
+                        <div class="card-box profile-header">
+                            <h3 class="card-title">Thông tin phòng khám</h3>
+                            <div class="row">
+                                <div class="col-md-12"> 
+                                    <div class="col-md-12">
+                                        <ul class="personal-info">
+                                            <li>
+                                                <span class="title">Phone:</span> 
+                                                <span class="text" id="cPhone"></span>
+                                            </li>
+                                            <!-- <li>
+                                                <span class="title">Email:</span>
+                                                <span class="text" id = "cEmail"></span>
+                                            </li>  -->
+                                            <li>
+                                                <span class="title">Address:</span>
+                                                <span class="text" id = "cAddress"></span>
+                                            </li> 
+                                            <li>
+                                                <span class="title">Introduction:</span>
+                                                <span class="text" id = "cIntroduction"></span>
+                                            </li> 
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- <div class="card-box">
+                            <h3 class="card-title">Thông tin phòng khám</h3>
                             <div class="experience-box">
                                 <ul class="experience-list">
                                     <li>
@@ -431,7 +465,7 @@
                                     </li>
                                 </ul>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
 						</div>
@@ -661,6 +695,11 @@
     <script src="assets/js/bootstrap.min.js"></script>
     <script src="assets/js/jquery.slimscroll.js"></script>
     <script src="assets/js/app.js"></script>
+    <script src="assets/js/profile.js"></script>
+    <script src="assets/js/api.js"></script>
+    <script src="assets/js/storage.js"></script>
+    <script src="assets/js/constants.js"></script>
+    <script src="assets/js/addres.js"></script>
 </body>
 
 
