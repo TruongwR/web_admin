@@ -98,14 +98,12 @@
                         saveSession('loginData', body.data);
                         saveLocal('accessToken', body.accessToken);
                         saveLocal('refreshToken', body.refreshToken);
-                        console.log('role: ', body.data.role.id);
-                        if(body.data.role.id === 1) {
-                            window.location.href = "/index-2.html";
-                        }
 
-                        if(body.data.role.id === 2) {
+                        if(body.data.role == null) 
                             window.location.href = "/appointments.html";
-                        }
+                         
+                        if(body.data.role.id === 1) 
+                            window.location.href = "/index-2.html"; 
                     })
 
 
