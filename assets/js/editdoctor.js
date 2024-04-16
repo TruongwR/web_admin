@@ -18,6 +18,7 @@ var passwordInput = document.getElementById("password");
 var confirmInput = document.getElementById("confirm");
 var cccdInput = document.getElementById('cccd');
 var toast = document.getElementById('toast');
+var typeSelect = document.getElementById('type')
 var addressString;
 var addressArray;
 var provinceId = -1;
@@ -92,6 +93,10 @@ window.addEventListener('DOMContentLoaded', (event) => {
         }
 
         cccdInput.value = responseData.user.cccd;
+         
+        typeSelect.innerHTML = `
+        <option value="0" ${responseData.type == 0 ? 'selected' : ''}>Bs tại viện</option>
+        <option value="1" ${responseData.type == 1 ? 'selected' : ''}>Bs tại gia</option> `
 
         var payload = {
             id: responseData.id,
@@ -110,7 +115,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
     })
 });
 
-function addPatient() {
+function updateDoctor() {
     var password = passwordInput.value;
     var confirm = confirmInput.value; 
  
@@ -137,20 +142,21 @@ function addPatient() {
             description: descriptionTextArial.value,
             active: activeRadio.checked ? 1 : 0,
             birthDate: dobInput.value,
-            cccd: cccdInput.value
+            cccd: cccdInput.value,
+            type: typeSelect.value
         } 
         console.log('before rest update api:\n', payload);
 
-        getAPIBody('put', `${ROOT}/admin/doctor/update`, payload)
-        .then(responseData => { 
-            window.location.href = "/doctors.html";
-        })
-        .catch(function(error) {              
-            // toast.innerText = error.response.message;
+        // getAPIBody('put', `${ROOT}/admin/doctor/update`, payload)
+        // .then(responseData => { 
+        //     window.location.href = "/doctors.html";
+        // })
+        // .catch(function(error) {              
+        //     // toast.innerText = error.response.message;
             
-            showToast(error.response.message);
-            // alert(error.response.message); 
-        });
+        //     showToast(error.response.message);
+        //     // alert(error.response.message); 
+        // });
     }
 }
 

@@ -19,13 +19,14 @@ var confirmInput = document.getElementById("confirm");
 var specializationDropDown = document.getElementById('specialization');
 var cccdInput = document.getElementById('cccd');
 var toast = document.getElementById('toast');
+var typeSelect = document.getElementById('type')
 var addressString;
 var addressArray = ['1', '1', '1', ''];
 var provinceId = -1;
 var districtId = -1; 
 var avatarSrc;
 
-window.addEventListener('DOMContentLoaded', (event) => {
+window.addEventListener('DOMContentLoaded', (event) => { 
     saveSession('avatarSrc', 'assets/img/user.jpg');
     jsonProvince.forEach(function(province) {
         var option = document.createElement('option');
@@ -93,7 +94,8 @@ function createDoctor() {
             roleId: 2, 
             active: activeRadio.checked ? 1 : 0,
             birthDate: dobInput.value,
-            cccd: cccdInput.value.trim()
+            cccd: cccdInput.value.trim(),
+            type: typeSelect.value
         } 
         console.log('before rest create api:\n', payload);
 

@@ -42,6 +42,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
                             </div>
                         </div>
                         <h4 class="doctor-name text-ellipsis"><a href="profile.html">${item.user.name}</a></h4>
+                        <div class=""><span>${item.type == 0 ? ' &#160;' : '(Bs tại gia)'}</span></div>
                         <div class="doc-prof">${item.specialization.name}</div>
                         <div class="user-country">
                             <i class="fa fa-map-marker"></i>${addressArray[3]}
@@ -105,7 +106,8 @@ function changePageSize () {
                             </div>
                         </div>
                         <h4 class="doctor-name text-ellipsis"><a href="profile.html">${item.user.name}</a></h4>
-                        <div class="doc-prof">${item.specialization.name}</div>
+                        <div class="doc-prof">${item.specialization.name}</div> 
+                        <div><span>${item.specialization.name}</span></div>
                         <div class="user-country">
                             <i class="fa fa-map-marker"></i>${addressArray[3]}
                         </div>
