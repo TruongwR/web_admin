@@ -1,9 +1,17 @@
-
+var doctorClinictxt = document.getElementById('doctorClinic');
+var patientTxt = document.getElementById('patients');
+var homeDoctortxt = document.getElementById('homeDoctor');
+var scheduleNumberTxt = document.getElementById('schedule');
 
 window.addEventListener('DOMContentLoaded', (event) => {
     var loginData = getSession('loginData');
-    var accessToken = getLocal('accessToken');
-    var refreshToken = getLocal('refreshToken');
-
-    console.log('check: ', loginData, '\n', accessToken);
+   
+    console.log('check: ', loginData);
+    getAPIBody('get', `${ROOT}/admin/index2/get`)
+    .then(function(responseData) {  
+        doctorClinictxt.innerText = responseData.clinicDoctors;
+        homeDoctortxt.innerText = responseData.homeDoctors;
+        patientTxt.innerText = responseData.patients;
+        scheduleNumberTxt.innerText = responseData.schedules;
+    }) ; 
 });
