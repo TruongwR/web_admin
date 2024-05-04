@@ -151,7 +151,7 @@
                             <a href="schedule.html"><i class="fa fa-calendar-check-o"></i> <span>Lịch Khám</span></a>
                         </li> -->
                         <li>
-                            <a href="departments.html"><i class="fa fa-hospital-o"></i> <span>Phòng Ban</span></a>
+                            <a href="departments.html"><i class="fa fa-hospital-o"></i> <span>Chuyên khoa</span></a>
                         </li>
 						<li class="submenu">
 							<a href="#"><i class="fa fa-user"></i> <span> Nhân Viên </span> <span class="menu-arrow"></span></a>
@@ -202,17 +202,15 @@
                             <a href="#"><i class="fa fa-commenting-o"></i> <span> Blog</span> <span class="menu-arrow"></span></a>
                             <ul style="display: none;">
                                 <li><a href="blog.html">Blog</a></li>
-                                <li><a href="blog-details.html">Blog View</a></li>
-                                <li><a href="add-blog.html">Add Blog</a></li>
-                                <li><a href="edit-blog.html">Edit Blog</a></li>
+                                <li><a href="blog-details.html">Blog View</a></li> 
                             </ul>
                         </li>
 						<!-- <li>
 							<a href="assets.html"><i class="fa fa-cube"></i> <span>Assets</span></a>
 						</li> -->
-						<li>
+						<!-- <li>
 							<a href="activities.html"><i class="fa fa-bell-o"></i> <span>Hoạt Động</span></a>
-						</li>
+						</li> -->
 						<li class="submenu">
 							<a href="#"><i class="fa fa-flag-o"></i> <span> Báo Cáo </span> <span class="menu-arrow"></span></a>
 							<ul style="display: none;">
@@ -363,7 +361,7 @@
 					</div>
 				</div>
 				<div class="row">
-					<div class="col-12 col-md-6 col-lg-8 col-xl-8">
+					<!-- <div class="col-12 col-md-6 col-lg-8 col-xl-8">
 						<div class="card">
 							<div class="card-header">
 								<h4 class="card-title d-inline-block">Lịch Hẹn Sắp Tới</h4> <a href="appointments.html" class="btn btn-primary float-right">Xem Tất Cả</a>
@@ -470,6 +468,21 @@
 								</div>
 							</div>
 						</div>
+					</div> -->
+                    <div class="col-12 col-md-6 col-lg-8 col-xl-8">
+						<div class="card">
+							<div class="card-header">
+								<h4 class="card-title d-inline-block">Bệnh Nhân Mới </h4> <a href="patients.html" class="btn btn-primary float-right">Xem Tất Cả</a>
+							</div>
+							<div class="card-block">
+								<div class="table-responsive">
+									<table class="table mb-0 new-patient-table" id="userTable">
+										<tbody> 
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
 					</div>
                     <div class="col-12 col-md-6 col-lg-4 col-xl-4">
                         <div class="card member-panel">
@@ -477,8 +490,8 @@
 								<h4 class="card-title mb-0">Bác Sĩ</h4>
 							</div>
                             <div class="card-body">
-                                <ul class="contact-list">
-                                    <li>
+                                <ul class="contact-list" id="doctorList">
+                                    <!-- <li>
                                         <div class="contact-cont">
                                             <div class="float-left user-img m-r-10">
                                                 <a href="profile.html" title="John Doe"><img src="assets/img/user.jpg" alt="" class="w-40 rounded-circle"><span class="status online"></span></a>
@@ -486,17 +499,6 @@
                                             <div class="contact-info">
                                                 <span class="contact-name text-ellipsis">John Doe</span>
                                                 <span class="contact-date">MBBS, MD</span>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="contact-cont">
-                                            <div class="float-left user-img m-r-10">
-                                                <a href="profile.html" title="Richard Miles"><img src="assets/img/user.jpg" alt="" class="w-40 rounded-circle"><span class="status offline"></span></a>
-                                            </div>
-                                            <div class="contact-info">
-                                                <span class="contact-name text-ellipsis">Richard Miles</span>
-                                                <span class="contact-date">MD</span>
                                             </div>
                                         </div>
                                     </li>
@@ -543,7 +545,7 @@
                                                 <span class="contact-date">MBBS, MD</span>
                                             </div>
                                         </div>
-                                    </li>
+                                    </li> -->
                                 </ul>
                             </div>
                             <div class="card-footer text-center bg-white">
@@ -553,58 +555,8 @@
                     </div>
 				</div>
 				<div class="row">
-					<div class="col-12 col-md-6 col-lg-8 col-xl-8">
-						<div class="card">
-							<div class="card-header">
-								<h4 class="card-title d-inline-block">Bệnh Nhân Mới </h4> <a href="patients.html" class="btn btn-primary float-right">Xem Tất Cả</a>
-							</div>
-							<div class="card-block">
-								<div class="table-responsive">
-									<table class="table mb-0 new-patient-table">
-										<tbody>
-											<tr>
-												<td>
-													<img width="28" height="28" class="rounded-circle" src="assets/img/user.jpg" alt="">
-													<h2>John Doe</h2>
-												</td>
-												<td>Johndoe21@gmail.com</td>
-												<td>+1-202-555-0125</td>
-												<td><button class="btn btn-primary btn-primary-one float-right">Fever</button></td>
-											</tr>
-											<tr>
-												<td>
-													<img width="28" height="28" class="rounded-circle" src="assets/img/user.jpg" alt="">
-													<h2>Richard</h2>
-												</td>
-												<td>Richard123@yahoo.com</td>
-												<td>202-555-0127</td>
-												<td><button class="btn btn-primary btn-primary-two float-right">Cancer</button></td>
-											</tr>
-											<tr>
-												<td>
-													<img width="28" height="28" class="rounded-circle" src="assets/img/user.jpg" alt="">
-													<h2>Villiam</h2>
-												</td>
-												<td>Richard123@yahoo.com</td>
-												<td>+1-202-555-0106</td>
-												<td><button class="btn btn-primary btn-primary-three float-right">Eye</button></td>
-											</tr>
-											<tr>
-												<td>
-													<img width="28" height="28" class="rounded-circle" src="assets/img/user.jpg" alt="">
-													<h2>Martin</h2>
-												</td>
-												<td>Richard123@yahoo.com</td>
-												<td>776-2323 89562015</td>
-												<td><button class="btn btn-primary btn-primary-four float-right">Fever</button></td>
-											</tr>
-										</tbody>
-									</table>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-12 col-md-6 col-lg-4 col-xl-4">
+		
+					<!-- <div class="col-12 col-md-6 col-lg-4 col-xl-4">
 						<div class="hospital-barchart">
 							<h4 class="card-title d-inline-block">Quản Lý Phòng Khám</h4>
 						</div>
@@ -667,7 +619,7 @@
 								</div>
 							</div>
 						</div>
-					 </div>
+					 </div> -->
 				</div>
             </div>
             <div class="notification-box">
