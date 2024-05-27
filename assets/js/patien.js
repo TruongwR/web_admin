@@ -59,7 +59,7 @@ function requestApi(pageSize, pageNumber) {
                             <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
                             <div class="dropdown-menu dropdown-menu-right">
                                 <a class="dropdown-item" href="#" onclick="editPatient(${item.id})"><i class="fa fa-pencil m-r-5"></i> Thay Đổi</a>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_patient"><i class="fa fa-trash-o m-r-5"></i> Xóa</a>
+                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_patient" data-id="${item.id}"><i class="fa fa-trash-o m-r-5"></i> Xóa</a>
                             </div>
                         </div>
                     </td>
@@ -71,6 +71,33 @@ function requestApi(pageSize, pageNumber) {
         patientTable.innerHTML += newHTML + `</tbody>`;
     })
 }  
+
+$(document).ready(function() {
+    $('#delete_patient').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget); // Button that triggered the modal
+        var doctorId = button.data('id'); // Extract info from data-* attributes
+
+        $(this).find('.btn-danger').data('id', doctorId);
+    });
+
+    $('#delete_patient').find('.btn-danger').on('click', function() {
+        var doctorId = $(this).data('id');
+
+        getAPIBody('delete', `${ROOT}/admin/user/delete?userId=${doctorId}`)
+        .then(function(responseData) {
+            if(responseData) {
+                showToast("success");
+                setTimeout(function() { 
+                    window.location.href = "patients.html";
+                }, 1500); 
+                
+            } else {
+                showToast("error");
+            }
+        });
+    });
+});
+
 
 function editPatient(id) { 
     saveSession('patientId', id);
@@ -100,4 +127,16 @@ function nextPage() {
 function prevPage() {
     patientTable.innerHTML = '';
     requestApi(pageSizeInput.value, pageNumInput.value-2)
+}
+
+function showToast(message) { 
+    toast.innerHTML = `<div class="toast-content">${message}</div>`
+    toast.style.display = 'block';
+    var header = document.createElement('div');  
+    header.classList.add('toast-header');  
+    toast.insertBefore(header, toast.firstChild);
+    setTimeout(function() {
+      toast.style.display = 'none';
+      toast.removeChild(header);
+    }, 1500); // 3 seconds
 }

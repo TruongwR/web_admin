@@ -264,4 +264,4 @@ function showToast(message) {
       toast.style.display = 'none';
       toast.removeChild(header);
     }, 3000); // 3 seconds
-  }
+}
