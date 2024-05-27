@@ -18,7 +18,9 @@ var passwordInput = document.getElementById("password");
 var confirmInput = document.getElementById("confirm");
 var cccdInput = document.getElementById('cccd');
 var toast = document.getElementById('toast');
-var typeSelect = document.getElementById('type')
+var typeSelect = document.getElementById('type');
+var examinationPriceInput = document.getElementById('examinationPrice'); 
+
 var addressString;
 var addressArray;
 var provinceId = -1;
@@ -98,6 +100,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
         <option value="0" ${responseData.type == 0 ? 'selected' : ''}>Bs tại viện</option>
         <option value="1" ${responseData.type == 1 ? 'selected' : ''}>Bs tại gia</option> `
 
+        examinationPriceInput.value = responseData.examinationPrice;
+
         var payload = {
             id: responseData.id,
             email: responseData.user.email,
@@ -109,7 +113,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
             address: responseData.user.address,
             description: responseData.user.description,
             active: responseData.user.active,
-            birthDate: dobInput.value
+            birthDate: dobInput.value,
+            examinationPrice: examinationPriceInput.value
         } 
         console.log(`usefuldata:\n`, payload);
     })
@@ -143,20 +148,21 @@ function updateDoctor() {
             active: activeRadio.checked ? 1 : 0,
             birthDate: dobInput.value,
             cccd: cccdInput.value,
-            type: typeSelect.value
+            type: typeSelect.value,
+            examinationPrice: examinationPriceInput.value
         } 
         console.log('before rest update api:\n', payload);
 
-        // getAPIBody('put', `${ROOT}/admin/doctor/update`, payload)
-        // .then(responseData => { 
-        //     window.location.href = "/doctors.html";
-        // })
-        // .catch(function(error) {              
-        //     // toast.innerText = error.response.message;
+        getAPIBody('put', `${ROOT}/admin/doctor/update`, payload)
+        .then(responseData => { 
+            window.location.href = "/doctors.html";
+        })
+        .catch(function(error) {              
+            // toast.innerText = error.response.message;
             
-        //     showToast(error.response.message);
-        //     // alert(error.response.message); 
-        // });
+            showToast(error.response.message);
+            // alert(error.response.message); 
+        });
     }
 }
 

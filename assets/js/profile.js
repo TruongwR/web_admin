@@ -16,7 +16,7 @@ var cPhone = document.getElementById('cPhone');
 var cEmail = document.getElementById('cEmail'); 
 var cAddress = document.getElementById('cAddress'); 
 var cIntroduction = document.getElementById('cIntroduction'); 
-
+var examinationPriceTxt = document.getElementById('examinationPrice')
 
 
 window.addEventListener('DOMContentLoaded', (event) => {
@@ -69,6 +69,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
         cPhone.innerText = clinic.phone;
         cAddress.innerText = clinic.address;
         cIntroduction.innerText = clinic.description;
+
+        examinationPriceTxt.innerText = responseData.examinationPrice;
     })
 
 });

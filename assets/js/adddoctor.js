@@ -20,6 +20,8 @@ var specializationDropDown = document.getElementById('specialization');
 var cccdInput = document.getElementById('cccd');
 var toast = document.getElementById('toast');
 var typeSelect = document.getElementById('type')
+var examinationPriceInput = document.getElementById('examinationPrice'); 
+
 var addressString;
 var addressArray = ['1', '1', '1', ''];
 var provinceId = -1;
@@ -95,7 +97,8 @@ function createDoctor() {
             active: activeRadio.checked ? 1 : 0,
             birthDate: dobInput.value,
             cccd: cccdInput.value.trim(),
-            type: typeSelect.value
+            type: typeSelect.value,
+            examinationPrice: examinationPriceInput.value() > 0 ? examinationPriceInput : 0
         } 
         console.log('before rest create api:\n', payload);
 
