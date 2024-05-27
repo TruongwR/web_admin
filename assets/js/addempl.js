@@ -96,9 +96,9 @@ function addPatient() {
         } 
         console.log('before rest create api:\n', payload);
 
-        getAPIBody('post', `${ROOT}/admin/user/create`, payload)
+        getAPIBody('post', `${ROOT}/admin/employee/create`, payload)
         .then(responseData => {  
-            window.location.href = "/patients.html";
+            window.location.href = "/empl.html";
         })
         .catch(function(error) {                        
             showToast(error.response.message);  

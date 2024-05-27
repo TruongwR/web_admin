@@ -9,30 +9,25 @@ var size;
 window.addEventListener('DOMContentLoaded', (event) => {
     size = 12;
 
-    getAPIBody('get', `${ROOT}/admin/doctor/list?size=${size}`)
+    getAPIBody('get', `${ROOT}/admin/employee/list?size=${size}`)
     .then(function(responseData) {  
         showingSpan.innerText = `${responseData.numberOfElements} / ${responseData.totalElements} doctors`
         if (responseData.numberOfElements <= size) {
-            loadMoreDiv.hidden = false; 
+            loadMoreDiv.hidden = false
         } else {
-            loadMoreDiv.hidden = true 
+            loadMoreDiv.hidden = true
         } 
-
+ 
         totalDoctor = responseData.totalElements;  
         var newHTML = ``;
         if(responseData.content.length > 0) {  
-            responseData.content.forEach(function(item) { 
-                var addressArray = item.user.address.split(',').map(function(item) {
-                    return item.trim();
-                }).slice(0, 4);
+            responseData.content.forEach(function(item) {  
                 
                 newHTML += `
                 <div class="col-md-4 col-sm-4 col-lg-3">
                     <div class="profile-widget">
                         <div class="doctor-img">
-                        <a class="avatar" href="#" onclick="handleAvatarClick('${item.id}')">
-                            <img alt=""  width="100%" height="100%" src="${item.user.avatar}">
-                        </a>
+                            <img class="avatar" alt=""  width="100%" height="100%" src="${item.avatar}">
                         </div>
                         <div class="dropdown profile-action">
                             <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
@@ -41,11 +36,10 @@ window.addEventListener('DOMContentLoaded', (event) => {
                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_doctor"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
                             </div>
                         </div>
-                        <h4 class="doctor-name text-ellipsis"><a href="profile.html">${item.user.name}</a></h4>
-                        <div class=""><span>${item.type == 0 ? ' &#160;' : '(Bs tại gia)'}</span></div>
-                        <div class="doc-prof">${item.specialization.name}</div>
+                        <h4 class="doctor-name text-ellipsis"><a href="profile.html">${item.name}</a></h4>
+                        <div class=""><span>${item.phone}</span></div> 
                         <div class="user-country">
-                            <i class="fa fa-map-marker"></i>${addressArray[3]}
+                            ${item.email}
                         </div>
                     </div>
                 </div>
@@ -71,32 +65,25 @@ function changePageSize () {
 
     doctorGrid.innerHTML = '';
 
-    getAPIBody('get', `${ROOT}/admin/doctor/list?size=${size}`)
+    getAPIBody('get', `${ROOT}/admin/employee/list?size=${size}`)
     .then(function(responseData) {  
         showingSpan.innerText = `${responseData.numberOfElements} / ${responseData.totalElements} doctors`
         if (responseData.numberOfElements <= size) {
-            loadMoreDiv.style.display = "none"
+            loadMoreDiv.hidden = false
         } else {
-            loadMoreDiv.style.display = "inline"
+            loadMoreDiv.hidden = true
         } 
 
-
         totalDoctor = responseData.totalElements;  
-        var doctorGrid = document.getElementById("doctor-grid");
         var newHTML = ``;
         if(responseData.content.length > 0) {  
-            responseData.content.forEach(function(item) { 
-                var addressArray = item.user.address.split(',').map(function(item) {
-                    return item.trim();
-                }).slice(0, 4);
+            responseData.content.forEach(function(item) {  
                 
                 newHTML += `
                 <div class="col-md-4 col-sm-4 col-lg-3">
                     <div class="profile-widget">
                         <div class="doctor-img">
-                        <a class="avatar" href="#" onclick="handleAvatarClick('${item.id}')">
-                            <img alt=""  width="100%" height="100%" src="${item.user.avatar}">
-                        </a>
+                            <img class="avatar" alt=""  width="100%" height="100%" src="${item.avatar}">
                         </div>
                         <div class="dropdown profile-action">
                             <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
@@ -105,11 +92,10 @@ function changePageSize () {
                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_doctor"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
                             </div>
                         </div>
-                        <h4 class="doctor-name text-ellipsis"><a href="profile.html">${item.user.name}</a></h4>
-                        <div class="doc-prof">${item.specialization.name}</div> 
-                        <div><span>${item.specialization.name}</span></div>
+                        <h4 class="doctor-name text-ellipsis"><a href="profile.html">${item.name}</a></h4>
+                        <div class=""><span>${item.phone}</span></div> 
                         <div class="user-country">
-                            <i class="fa fa-map-marker"></i>${addressArray[3]}
+                            ${item.email}
                         </div>
                     </div>
                 </div>

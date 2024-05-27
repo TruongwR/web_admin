@@ -29,6 +29,20 @@ var districtId = -1;
 var avatarSrc;
 
 window.addEventListener('DOMContentLoaded', (event) => { 
+    getAPIBody('get', `${ROOT}/admin/specialization/active`)
+    .then(function(responseData) {  
+        var html = ``; 
+        
+        if(responseData.content.length > 0) {  
+            responseData.content.forEach(function(item) { 
+                html += `<option value="${item.id}">${item.name}</option>`
+            });
+        }
+        
+        specializationDropDown.innerHTML = html;
+    });
+
+
     saveSession('avatarSrc', 'assets/img/user.jpg');
     jsonProvince.forEach(function(province) {
         var option = document.createElement('option');
