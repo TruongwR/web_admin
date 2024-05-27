@@ -137,17 +137,17 @@ function updateDoctor() {
     else { 
         var payload = {
             id: getSession('doctorId'),
-            email: doctorMailInput.value,
-            name: doctorNameInput.value,
-            password: password,
+            email: doctorMailInput.value.trim(),
+            name: doctorNameInput.value.trim(),
+            password: password.trim(),
             gender: maleRadioButton.checked ? '1' : '0',
-            phone: phoneInput.value,
+            phone: phoneInput.value.trim(),
             avatar: avartarImg.src,
             address: addressString,
-            description: descriptionTextArial.value,
+            description: descriptionTextArial.value.trim(),
             active: activeRadio.checked ? 1 : 0,
             birthDate: dobInput.value,
-            cccd: cccdInput.value,
+            cccd: cccdInput.value.trim(),
             type: typeSelect.value,
             examinationPrice: examinationPriceInput.value
         } 

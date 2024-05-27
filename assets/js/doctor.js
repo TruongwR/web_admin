@@ -13,10 +13,11 @@ window.addEventListener('DOMContentLoaded', (event) => {
     getAPIBody('get', `${ROOT}/admin/doctor/list?size=${size}`)
     .then(function(responseData) {  
         showingSpan.innerText = `${responseData.numberOfElements} / ${responseData.totalElements} doctors`
-        if (responseData.numberOfElements <= size) {
-            loadMoreDiv.hidden = false; 
+
+        if (responseData.totalElements > responseData.numberOfElements) {
+            loadMoreDiv.hidden = false
         } else {
-            loadMoreDiv.hidden = true 
+            loadMoreDiv.hidden = true
         } 
 
         totalDoctor = responseData.totalElements;  
@@ -102,12 +103,12 @@ function changePageSize () {
     getAPIBody('get', `${ROOT}/admin/doctor/list?size=${size}`)
     .then(function(responseData) {  
         showingSpan.innerText = `${responseData.numberOfElements} / ${responseData.totalElements} doctors`
-        if (responseData.numberOfElements <= size) {
-            loadMoreDiv.style.display = "none"
+        
+        if (responseData.totalElements > responseData.numberOfElements) {
+            loadMoreDiv.hidden = false
         } else {
-            loadMoreDiv.style.display = "inline"
+            loadMoreDiv.hidden = true
         } 
-
 
         totalDoctor = responseData.totalElements;  
         var doctorGrid = document.getElementById("doctor-grid");

@@ -112,7 +112,7 @@ function createDoctor() {
             birthDate: dobInput.value,
             cccd: cccdInput.value.trim(),
             type: typeSelect.value,
-            examinationPrice: examinationPriceInput.value() > 0 ? examinationPriceInput : 0
+            examinationPrice: examinationPriceInput.value > 0 ? examinationPriceInput.value : 0
         } 
         console.log('before rest create api:\n', payload);
 

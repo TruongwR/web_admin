@@ -11,8 +11,12 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
     getAPIBody('get', `${ROOT}/admin/employee/list?size=${size}`)
     .then(function(responseData) {  
-        showingSpan.innerText = `${responseData.numberOfElements} / ${responseData.totalElements} doctors`
-        if (responseData.numberOfElements <= size) {
+        showingSpan.innerText = `${responseData.numberOfElements} / ${responseData.totalElements} employees`
+        
+        console.log('dddd');
+        console.log(responseData.numberOfElements > responseData.totalElements);
+
+        if (responseData.totalElements > responseData.numberOfElements) {
             loadMoreDiv.hidden = false
         } else {
             loadMoreDiv.hidden = true
@@ -94,7 +98,9 @@ function changePageSize () {
     getAPIBody('get', `${ROOT}/admin/employee/list?size=${size}`)
     .then(function(responseData) {  
         showingSpan.innerText = `${responseData.numberOfElements} / ${responseData.totalElements} doctors`
-        if (responseData.numberOfElements <= size) {
+        
+
+        if (responseData.totalElements > responseData.numberOfElements) {
             loadMoreDiv.hidden = false
         } else {
             loadMoreDiv.hidden = true
