@@ -12,7 +12,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
                 <div class="blog grid-blog" height='250px'> 
                     <div class="blog-content">
                         <a href="#" onclick="viewBlog(${blog.id})"><h3 class="blog-title">${blog.title}</h3></a>
-                        <p style="height: 150px;">${blog.content.substring(0, 180)}${blog.content.length > 150 ? ' ...': ''}</p>
+                        <div style="max-height: 150px;">${blog.content.substring(0, 180)}${blog.content.length > 150 ? ' ...': ''}</div>
                         <a href="#" onclick="viewBlog(${blog.id})" class="read-more"><i class="fa fa-long-arrow-right"></i> Read More</a>
                         <div class="blog-info clearfix">
                             <div class="post-left">

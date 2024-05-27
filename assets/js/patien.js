@@ -5,6 +5,7 @@ var nextBtn = document.getElementById('next')
 var pageNumInput = document.getElementById('pageNumber');
 var maxPageTxt = document.getElementById('maxPage') 
 
+
 window.addEventListener('DOMContentLoaded', (event) => {
     requestApi(10, 0);
 });
@@ -15,7 +16,6 @@ function requestApi(pageSize, pageNumber) {
     .then(function(responseData) { 
         maxPageTxt.innerText = `/ ${responseData.totalPages}`
         pageNumInput.value = 1 + parseInt(`${responseData.number}`)
-
         if (responseData.number === 0) {
             prevBtn.removeEventListener("click", prevPage);
             prevBtn.style.backgroundColor = '#565656';
@@ -86,6 +86,9 @@ function changePageNum() {
     patientTable.innerHTML = '';
     if (pageNumInput.value < 0) 
         pageNumInput.value = 0 
+    // if (pageNumInput.value > maxPageTxt.value)
+    //     pageNumInput.value = maxPageTxt.value
+ 
     requestApi(pageSizeInput.value, pageNumInput.value-1)
 }
 
