@@ -48,6 +48,44 @@ window.addEventListener('DOMContentLoaded', (event) => {
             </li>`;
         });
         doctorList.innerHTML += html;
+
+        var barChartData = responseData.barChartData;
+        barChartData.datasets[0].backgroundColor = 'rgba(255, 188, 53, 0.5)';
+        barChartData.datasets[0].borderColor = 'rgba(255, 188, 53, 1)';
+        barChartData.datasets[0].borderWidth = 1;
+        var ctx = document.getElementById('bargraph').getContext('2d');
+        window.myBar = new Chart(ctx, {
+            type: 'bar',
+            data: barChartData,
+            options: {
+                responsive: true,
+                legend: {
+                    display: false,
+                }
+            }
+        });
+        var lineChartData = responseData.lineCharData;
+        lineChartData.datasets[0].backgroundColor =  "rgba(0, 158, 251, 0.5)";
+        var linectx = document.getElementById('linegraph').getContext('2d'); 
+        window.myLine = new Chart(linectx, {
+            type: 'line',
+            data: lineChartData,
+            options: {
+                responsive: true,
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true,
+                            min: 0
+                        }
+                    }]
+                },
+                tooltips: {
+                    mode: 'index',
+                    intersect: false,
+                }
+            }
+        }); 
     }) ;  
 });
 
