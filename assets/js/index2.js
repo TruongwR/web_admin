@@ -83,6 +83,9 @@ window.addEventListener('DOMContentLoaded', (event) => {
                 tooltips: {
                     mode: 'index',
                     intersect: false,
+                },
+                legend: {
+                    display: false // Ẩn hoàn toàn chú giải (legend)
                 }
             }
         }); 
