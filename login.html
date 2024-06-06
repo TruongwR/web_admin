@@ -36,11 +36,11 @@
                         </div>
                         <div class="form-group">
                             <label>Username or Email</label>
-                            <input id="username" type="text" autofocus="" class="form-control" value="a111111111">
+                            <input id="username" type="text" autofocus="" class="form-control" value="0866633280">
                         </div>
                         <div class="form-group">
                             <label>Password</label>
-                            <input id="password" type="password" class="form-control" value="1">
+                            <input id="password" type="password" class="form-control" value="A12345678b">
                         </div>
                         <div class="form-group text-right">
                             <a href="forgot-password.html">Forgot your password?</a>
@@ -69,8 +69,8 @@
         document.getElementById("form-signin").addEventListener("submit", function(e) {
             e.preventDefault()
             // Lấy giá trị của username và password từ các input
-            var username = document.getElementById("username").value;
-            var password = document.getElementById("password").value;
+            var username = document.getElementById("username").value.trim().replace(/^0+/, "84/");
+            var password = document.getElementById("password").value.trim();
 
             // Tạo payload để gửi đến API
             var payload = {
@@ -99,11 +99,11 @@
                         saveLocal('accessToken', body.accessToken);
                         saveLocal('refreshToken', body.refreshToken);
 
-                        if(body.data.role == null) 
+                        if(body.data.role == null)
                             window.location.href = "/appointments.html";
-                         
-                        if(body.data.role.id === 1) 
-                            window.location.href = "/index-2.html"; 
+
+                        if(body.data.role.id === 1)
+                            window.location.href = "/index-2.html";
                     })
 
 
